@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary1;
+using NameSpaced;
 
 namespace ConsoleApp1
 {
@@ -154,7 +156,36 @@ namespace ConsoleApp1
             hello.Name = "Teja";
             Console.WriteLine(hello.Name);
 
+            hello.sayHello();
+
+            Class1 class1 = new Class1();
+
+            NameSpaced.NamespacedClass nameSpacedClass = new NameSpaced.NamespacedClass();
+            nameSpacedClass.Print();
+
+            NamespacedClass nameSpacedClass1 = new NamespacedClass();
+            nameSpacedClass1.Print();
+
+            FromClassLibrary fromClassLibrary = new FromClassLibrary();
+
+            Console.WriteLine(fromClassLibrary.IntToString(5));
+            try
+            {
+                Console.WriteLine(fromClassLibrary.IntToString(6));
+            } catch(Exception exp)
+            {
+                Console.WriteLine(exp);
+            }
+
             Console.ReadLine();
+        }
+    }
+
+    static class Extensions
+    {
+        static public void sayHello(this Hello hello)
+        {
+            Console.WriteLine("Saying hello!");
         }
     }
 }
